@@ -10,6 +10,8 @@ public class BezierCurveEditor : Editor
 	SerializedProperty closeProp;
 	SerializedProperty pointsProp;
 	SerializedProperty colorProp;
+    SerializedProperty fpsProp;
+    SerializedProperty initialSpeedProp;
 	
 	private static bool showPoints = true;
 	
@@ -21,7 +23,9 @@ public class BezierCurveEditor : Editor
 		closeProp = serializedObject.FindProperty("_close");
 		pointsProp = serializedObject.FindProperty("points");
 		colorProp = serializedObject.FindProperty("drawColor");
-	}
+        fpsProp = serializedObject.FindProperty("fps");
+        initialSpeedProp = serializedObject.FindProperty("initSpeed");
+    }
 	
 	public override void OnInspectorGUI()
 	{
@@ -30,6 +34,8 @@ public class BezierCurveEditor : Editor
 		EditorGUILayout.PropertyField(resolutionProp);
 		EditorGUILayout.PropertyField(closeProp);
 		EditorGUILayout.PropertyField(colorProp);
+        EditorGUILayout.PropertyField(fpsProp);
+        EditorGUILayout.PropertyField(initialSpeedProp);
 		
 		showPoints = EditorGUILayout.Foldout(showPoints, "Points");
 		
